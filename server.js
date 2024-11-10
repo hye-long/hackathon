@@ -6,14 +6,14 @@ const app = express();
 const PORT = 2024;
 const API_KEY = process.env.YOUTUBE_API_KEY;
 
-// Utility function to extract video ID from YouTube URL
+
 function extractVideoId(url) {
     const regex = /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)|(?:https?:\/\/)?(?:www\.)?youtu\.be\/([^?]+)/;
     const match = url.match(regex);
     return match ? (match[1] || match[2]) : null;
 }
 
-// Fetch specific video info by URL
+
 app.get('/video/basic_info', async (req, res) => {
     const videoUrl = req.query.url;
     const videoId = extractVideoId(videoUrl);
